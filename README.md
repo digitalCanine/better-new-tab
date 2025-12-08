@@ -199,7 +199,7 @@ MIT License - see LICENSE file for details
 ## Acknowledgments
 
 - Inspired by terminal emulators and minimalist new tab extensions
-- Weather data provided by [Open-Meteo](https://open-meteo.com/)
+- Weather data provided by [Open Weather Map](https://openweathermap.org/)
 - Built for keyboard warriors and terminal enthusiasts
 - Thanks to all contributors and users!
 
