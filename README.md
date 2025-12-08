@@ -36,6 +36,7 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 ### Development Installation
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/yourusername/better-new-tab.git
    cd better-new-tab
@@ -45,6 +46,16 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 3. Enable "Developer mode"
 4. Click "Load unpacked"
 5. Select the cloned directory
+
+### Setting as Homepage (Firefox)
+
+Firefox extensions can only override new tabs automatically. To set this as your homepage:
+
+1. Open a new tab (the extension will load)
+2. Click the star icon to bookmark the page
+3. Go to Firefox Settings → Home
+4. Under "Homepage and new windows", select "Custom URLs"
+5. Click "Use Current Pages" or paste your bookmark URL
 
 ## Usage
 
@@ -68,6 +79,7 @@ Prefix your search with these commands:
 - `!x [query]` - X (Twitter) search
 
 **Examples:**
+
 ```
 !yt lofi hip hop
 !gh rust projects
@@ -122,6 +134,7 @@ Better New Tab replaces your browser's new tab page with a custom interface feat
 - **Color Customization** - CSS variables updated dynamically and saved to Chrome storage
 
 The weather is fetched on page load:
+
 1. Gets your approximate location via IP geolocation
 2. Fetches current weather from Open-Meteo (free, no API key needed)
 3. Displays: `City / Temperature / Condition`
@@ -179,6 +192,7 @@ This extension:
 - ✅ Only stores your color preferences and search history locally
 
 **External APIs used:**
+
 - `ipapi.co` - IP geolocation (to determine weather location)
 - `api.open-meteo.com` - Weather data (free, no authentication)
 - `icons.duckduckgo.com` - Favicon fetching for search history tiles
