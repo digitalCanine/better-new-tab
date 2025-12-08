@@ -2,7 +2,7 @@
 
 A terminal-styled new tab page with search, weather, and command system. Perfect for users who want their browser to feel like home.
 
-![Version](https://img.shields.io/badge/version-1.0.1-blue) ![License](https://img.shields.io/badge/license-MIT-green)
+![Version](https://img.shields.io/badge/version-1.0.2-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Features
 
@@ -111,7 +111,7 @@ Orange:        #c2a86c
 Better New Tab replaces your browser's new tab page with a custom interface featuring:
 
 - **Real-time Clock** - Updates every second in the top-right
-- **Weather Widget** - Uses ipapi.co for location and Open Weather Map for weather data
+- **Weather Widget** - Uses ipapi.co for approximate location and Open Weather Map for weather data
 - **Command System** - Parses `!` prefixed commands for shortcuts
 - **Search History** - Stores your last 6 searches with favicon icons
 - **Color Customization** - CSS variables updated dynamically and saved to Chrome storage
