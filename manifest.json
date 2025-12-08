@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Better New Tab",
-  "version": "1.0",
+  "name": "digitalCanine's Better New Tab",
+  "version": "1.0.0",
   "description": "A terminal-styled new tab with search and weather",
   "permissions": [
     "storage"
@@ -9,14 +9,19 @@
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
+  "optional_permissions": [],
   "browser_specific_settings": {
     "gecko": {
-      "id": "better-new-tab@example.com"
+      "id": "digitalcanines-better-new-tab@local.addon",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
     }
   },
-  "homepage_url": "newtab.html",
   "icons": {
-    "48": "./icons/icon48.png",
-    "128": "./icons/icon128.png"
+    "48": "./icons/icon-48.png",
+    "128": "./icons/icon-128.png"
   }
 }
