@@ -16,7 +16,7 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 
 ## Example
 
-<img width="1913" height="1075" alt="image" src="https://github.com/user-attachments/assets/8bfb40e5-707f-4536-9a33-3556c8cc7157" />
+<img width="1884" height="1020" alt="image" src="https://github.com/user-attachments/assets/905df7a2-c405-477b-922c-38e9eec24626" />
 
 ## Installation
 
