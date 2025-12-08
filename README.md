@@ -68,8 +68,8 @@ Prefix your search with these commands:
 **Examples:**
 
 ```
-!yt lofi hip hop
-!gh rust projects
+!yt homestuck soundtrack volume 9-10
+!gh c# projects
 !wiki quantum computing
 ```
 
