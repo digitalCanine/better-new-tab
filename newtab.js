@@ -345,6 +345,19 @@ form.addEventListener("submit", (e) => {
   const q = input.value.trim();
   if (!q) return;
 
+  // Check if it's a direct URL (starts with http:// or https://)
+  if (q.startsWith('http://') || q.startsWith('https://')) {
+    window.location.href = q;
+    return;
+  }
+
+  // Check if it looks like a domain (contains . and no spaces)
+  if (q.includes('.') && !q.includes(' ') && !q.startsWith('!')) {
+    // Add https:// if not present
+    window.location.href = `https://${q}`;
+    return;
+  }
+
   const parts = q.split(' ');
   const cmd = parts[0].toLowerCase();
   const query = parts.slice(1).join(' ');
