@@ -2,7 +2,7 @@
 
 A terminal-styled new tab page with search, weather, and command system. Perfect for users who want their browser to feel like home.
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue) ![License](https://img.shields.io/badge/license-MIT-green)
+![Version](https://img.shields.io/badge/version-1.0.1-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Features
 
@@ -17,7 +17,6 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 ## Example
 
 <img width="1913" height="1075" alt="image" src="https://github.com/user-attachments/assets/8bfb40e5-707f-4536-9a33-3556c8cc7157" />
-
 
 ## Installation
 
@@ -40,15 +39,10 @@ Note that this release is my own private version for now
 2. Open Firefox and go to `about:debugging`
 3. Click "This Firefox" → "Load Temporary Add-on"
 4. Select the `manifest.json` file from the cloned directory
+
 ### Setting as Homepage
 
-Firefox extensions can only override new tabs automatically. To set this as your homepage:
-
-1. Open a new tab (the extension will load)
-2. Click the star icon to bookmark the page
-3. Go to Firefox Settings → Home
-4. Under "Homepage and new windows", select "Custom URLs"
-5. Click "Use Current Pages" or paste your bookmark URL
+Firefox only allows automatic new tab replacement. If you’d like similar behavior for your homepage, you can manually set it using a bookmark.
 
 ## Usage
 
@@ -117,7 +111,7 @@ Orange:        #c2a86c
 Better New Tab replaces your browser's new tab page with a custom interface featuring:
 
 - **Real-time Clock** - Updates every second in the top-right
-- **Weather Widget** - Uses ipapi.co for location and Open-Meteo for weather data
+- **Weather Widget** - Uses ipapi.co for location and Open Weather Map for weather data
 - **Command System** - Parses `!` prefixed commands for shortcuts
 - **Search History** - Stores your last 6 searches with favicon icons
 - **Color Customization** - CSS variables updated dynamically and saved to Chrome storage
@@ -125,7 +119,7 @@ Better New Tab replaces your browser's new tab page with a custom interface feat
 The weather is fetched on page load:
 
 1. Gets your approximate location via IP geolocation
-2. Fetches current weather from Open-Meteo (free, no API key needed)
+2. Fetches current weather from Open Weather Map (free, no API key needed)
 3. Displays: `City / Temperature / Condition`
 
 ## Project Structure
@@ -177,7 +171,6 @@ This extension:
 
 - ✅ Does NOT collect any personal data
 - ✅ Does NOT track your browsing
-- ✅ Does NOT send data to external servers (except weather APIs)
 - ✅ Only stores your color preferences and search history locally
 
 **External APIs used:**
@@ -186,7 +179,7 @@ This extension:
 - `api.open-meteo.com` - Weather data (free, no authentication)
 - `icons.duckduckgo.com` - Favicon fetching for search history tiles
 
-All settings stay on your device and sync through Chrome Sync if enabled.
+All settings stay on your device and sync through browser storage and Firefox Sync if enabled.
 
 ## License
 
