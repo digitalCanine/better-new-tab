@@ -14,7 +14,7 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 - 🔧 **Built-in Commands** - `!help`, `!neofetch`, `!config`, and more
 - 💾 **Persistent Settings** - Your colors and history sync across browser sessions
 
-## Examples
+## Example
 
 <img width="1913" height="1075" alt="image" src="https://github.com/user-attachments/assets/8bfb40e5-707f-4536-9a33-3556c8cc7157" />
 
