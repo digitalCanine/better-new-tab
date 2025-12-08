@@ -111,7 +111,7 @@ Orange:        #c2a86c
 Better New Tab replaces your browser's new tab page with a custom interface featuring:
 
 - **Real-time Clock** - Updates every second in the top-right
-- **Weather Widget** - Uses ipapi.co for approximate location and Open Weather Map for weather data
+- **Weather Widget** - Uses ipapi.co for approximate location and Open Meteo for weather data
 - **Command System** - Parses `!` prefixed commands for shortcuts
 - **Search History** - Stores your last 6 searches with favicon icons
 - **Color Customization** - CSS variables updated dynamically and saved to Chrome storage
@@ -119,7 +119,7 @@ Better New Tab replaces your browser's new tab page with a custom interface feat
 The weather is fetched on page load:
 
 1. Gets your approximate location via IP geolocation
-2. Fetches current weather from Open Weather Map (free, no API key needed)
+2. Fetches current weather from Open Meteo (free, no API key needed)
 3. Displays: `City / Temperature / Condition`
 
 ## Project Structure
@@ -188,7 +188,7 @@ MIT License - see LICENSE file for details
 ## Acknowledgments
 
 - Inspired by terminal emulators and minimalist new tab extensions
-- Weather data provided by [Open Weather Map](https://openweathermap.org/)
+- Weather data provided by [Open Meteo](https://open-meteo.com/)
 - Built for keyboard warriors and terminal enthusiasts
 - Thanks to all contributors and users!
 
