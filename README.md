@@ -20,18 +20,17 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 
 ## Installation
 
-### From Chrome Web Store (Coming Soon)
+### From Firefox Extensions (Coming Soon)
 
 *Extension pending review*
 
 ### Manual Installation
 
 1. Download the latest release from [Releases](../../releases)
-2. Unzip the downloaded file
-3. Open Chrome/Edge and go to `chrome://extensions/`
-4. Enable "Developer mode" (toggle in top-right)
-5. Click "Load unpacked"
-6. Select the `better-new-tab` folder
+2. Unzip the file
+3. Open firefox and go to about:debugging#/runtime/this-firefox
+4. Click "Load Temporary Add-ons"
+5. Select the manifest.json file inside the better-new-tab folder
 
 ### Development Installation
 
@@ -42,12 +41,11 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
    cd better-new-tab
    ```
 
-2. Open Chrome/Edge and go to `chrome://extensions/`
-3. Enable "Developer mode"
-4. Click "Load unpacked"
-5. Select the cloned directory
+2. Open Firefox and go to about:debugging#/runtime/this-firefox
+3. Click "Load Temporary Add-ons"
+4. Select the manifest.json file inside the cloned repo
 
-### Setting as Homepage (Firefox)
+### Setting as Homepage
 
 Firefox extensions can only override new tabs automatically. To set this as your homepage:
 
