@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>New Tab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="scanlines">
+  <div class="container">
+    <div class="bar">
+      <div class="weather" id="weather">loading weather...</div>
+      <div class="time" id="time">00:00</div>
+    </div>
+
+    <div class="search-wrapper">
+      <div class="output" id="output"></div>
+
+      <form id="searchForm" class="search-line">
+        <span class="prompt">>></span>
+        <input id="search" type="text" placeholder="Search shit here" autofocus />
+      </form>
+
+      <div class="recent" id="recent"></div>
+    </div>
+
+    <div class="hint">duckduckgo / local history / terminal vibes / !help</div>
+  </div>
+
+  <script src="newtab.js"></script>
+</body>
+
+</html>
