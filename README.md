@@ -112,10 +112,6 @@ Green:         #afb979
 Orange:        #c2a86c
 ```
 
-## Screenshots
-
-*Coming soon*
-
 ## How It Works
 
 Better New Tab replaces your browser's new tab page with a custom interface featuring:
