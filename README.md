@@ -21,7 +21,7 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 
 ## Installation
 
-### From Firefox Extensions (Coming Soon)
+### From Mozilla Add-ons
 
 *Extension pending review*
 
