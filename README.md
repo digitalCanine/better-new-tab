@@ -28,24 +28,18 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 ### Manual Installation
 
 1. Download the latest release from [Releases](../../releases)
-2. Unzip the file
-3. Open firefox and go to about:debugging#/runtime/this-firefox
-4. Click "Load Temporary Add-ons"
-5. Select the manifest.json file inside the better-new-tab folder
+2. Open Firefox and go to `about:addons`
+3. Click the gear icon → "Install Add-on From File"
+4. Select the downloaded `.xpi` file
+
+Note that this release is my own private version for now
 
 ### Development Installation
 
-1. Clone this repository:
-
-   ```bash
-   git clone https://github.com/yourusername/better-new-tab.git
-   cd better-new-tab
-   ```
-
-2. Open Firefox and go to about:debugging#/runtime/this-firefox
-3. Click "Load Temporary Add-ons"
-4. Select the manifest.json file inside the cloned repo
-
+1. Clone this repository
+2. Open Firefox and go to `about:debugging`
+3. Click "This Firefox" → "Load Temporary Add-on"
+4. Select the `manifest.json` file from the cloned directory
 ### Setting as Homepage
 
 Firefox extensions can only override new tabs automatically. To set this as your homepage:
