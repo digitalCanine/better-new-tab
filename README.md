@@ -2,7 +2,7 @@
 
 A terminal-styled new tab page with search, weather, and command system. Perfect for users who want their browser to feel like home.
 
-![Version](https://img.shields.io/badge/version-1.0.2-blue) ![License](https://img.shields.io/badge/license-MIT-green)
+![Version](https://img.shields.io/badge/version-1.0.3-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Features
 
