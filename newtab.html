@@ -20,13 +20,37 @@
 
       <form id="searchForm" class="search-line">
         <span class="prompt">>></span>
-        <input id="search" type="text" placeholder="Search the wired" autofocus />
+        <input id="search" type="text" placeholder="Search shit here" autofocus />
       </form>
 
-      <div class="recent" id="recent"></div>
+      <div class="bookmarks" id="bookmarks"></div>
     </div>
 
     <div class="hint">duckduckgo / local history / terminal vibes / !help</div>
+  </div>
+
+  <!-- Bookmark Modal -->
+  <div class="modal" id="bookmarkModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="modal-title" id="modalTitle">Add Bookmark</span>
+        <button class="modal-close" id="closeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <label for="bookmarkName">Nickname:</label>
+          <input type="text" id="bookmarkName" placeholder="GitHub" maxlength="12" />
+        </div>
+        <div class="input-group">
+          <label for="bookmarkUrl">URL:</label>
+          <input type="text" id="bookmarkUrl" placeholder="https://github.com" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-secondary" id="deleteBookmark" style="display: none;">Delete</button>
+        <button class="modal-btn modal-btn-primary" id="saveBookmark">Save</button>
+      </div>
+    </div>
   </div>
 
   <script src="newtab.js"></script>

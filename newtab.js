@@ -77,23 +77,18 @@ function addOutput(content, className = "") {
   line.className = `output-line ${className}`;
 
   if (typeof content === 'string') {
-    // Parse the string and create elements safely
     const parser = new DOMParser();
     const doc = parser.parseFromString(`<div>${content}</div>`, 'text/html');
     const parsed = doc.body.firstChild;
 
-    // Copy all child nodes
     while (parsed.firstChild) {
       line.appendChild(parsed.firstChild);
     }
   } else {
-    // It's already a DOM element
     line.appendChild(content);
   }
 
   outputEl.appendChild(line);
-
-  // Auto-scroll to bottom
   outputEl.scrollTop = outputEl.scrollHeight;
 }
 
@@ -118,7 +113,7 @@ const commands = {
       { key: '!help', desc: 'Show this help menu' },
       { key: '!config', desc: 'Open color configuration' },
       { key: '!neofetch', desc: 'Display system info' },
-      { key: '!hist', desc: 'Show search history' }
+      { key: '!hist', desc: 'Show bookmarks' }
     ];
 
     helpCommands.forEach(cmd => {
@@ -150,7 +145,8 @@ const commands = {
       { key: '!wiki [query]', desc: 'Wikipedia search' },
       { key: '!maps [query]', desc: 'Google Maps search' },
       { key: '!reddit [query]', desc: 'Reddit search' },
-      { key: '!x [query]', desc: 'X (Twitter) search' }
+      { key: '!x [query]', desc: 'X (Twitter) search' },
+      { key: '!tumblr [query]', desc: 'Tumblr search' }
     ];
 
     searchEngines.forEach(cmd => {
@@ -204,24 +200,24 @@ const commands = {
   },
 
   '!hist': () => {
-    chrome.storage.local.get(['recentSites'], (result) => {
+    chrome.storage.local.get(['bookmarks'], (result) => {
       clearOutput();
-      const list = result.recentSites || [];
+      const list = result.bookmarks || [];
 
       if (list.length === 0) {
-        const msg = createSpan('No search history yet', 'output-sep');
+        const msg = createSpan('No bookmarks yet. Click a + slot to add one.', 'output-sep');
         addOutput(msg);
         return;
       }
 
-      const header = createSpan('SEARCH HISTORY:', 'output-header');
+      const header = createSpan('BOOKMARKS:', 'output-header');
       addOutput(header);
       addOutput(document.createTextNode(''));
 
-      list.forEach((site, i) => {
+      list.forEach((bookmark, i) => {
         const line = document.createElement('div');
         const num = createSpan(`${i + 1}.`, 'output-key');
-        const name = document.createTextNode(' ' + site.name);
+        const name = document.createTextNode(' ' + bookmark.name + ' - ' + bookmark.url);
         line.appendChild(num);
         line.appendChild(name);
         addOutput(line);
@@ -353,7 +349,6 @@ form.addEventListener("submit", (e) => {
 
   // Check if it looks like a domain (contains . and no spaces)
   if (q.includes('.') && !q.includes(' ') && !q.startsWith('!')) {
-    // Add https:// if not present
     window.location.href = `https://${q}`;
     return;
   }
@@ -402,60 +397,203 @@ form.addEventListener("submit", (e) => {
     case '!x':
       url = `https://twitter.com/search?q=${encodeURIComponent(query)}`;
       break;
+    case '!tumblr':
+      url = `https://www.tumblr.com/search/${encodeURIComponent(query)}`;
+      break;
     default:
-      // Default to DuckDuckGo
       url = `https://duckduckgo.com/?q=${encodeURIComponent(q)}`;
   }
 
-  saveVisit(q);
   window.location.href = url;
 });
 
-// Storage functions
-function saveVisit(query) {
-  chrome.storage.local.get(["recentSites"], (result) => {
-    const list = result.recentSites || [];
-    const entry = {
-      name: query.slice(0, 10),
-      url: `https://duckduckgo.com/?q=${encodeURIComponent(query)}`,
-      icon: `https://icons.duckduckgo.com/ip3/duckduckgo.com.ico`
-    };
-    const filtered = list.filter((x) => x.url !== entry.url);
-    filtered.unshift(entry);
-    chrome.storage.local.set({ recentSites: filtered.slice(0, 6) }, () => {
-      renderRecent();
-    });
-  });
-}
-
-function renderRecent() {
-  const wrap = document.getElementById("recent");
-  chrome.storage.local.get(["recentSites"], (result) => {
-    // Clear existing content safely
+// Bookmark functionality
+function renderBookmarks() {
+  const wrap = document.getElementById("bookmarks");
+  chrome.storage.local.get(["bookmarks"], (result) => {
     while (wrap.firstChild) {
       wrap.removeChild(wrap.firstChild);
     }
 
-    const list = result.recentSites || [];
+    const bookmarks = result.bookmarks || [];
 
-    list.forEach((site) => {
-      const a = document.createElement("a");
-      a.className = "site";
-      a.href = site.url;
+    bookmarks.forEach((bookmark, index) => {
+      const div = document.createElement("div");
+      div.className = "site";
+      div.onclick = (e) => {
+        e.preventDefault();
+        if (e.ctrlKey || e.metaKey) {
+          window.open(bookmark.url, '_blank');
+        } else {
+          window.location.href = bookmark.url;
+        }
+      };
+      div.oncontextmenu = (e) => {
+        e.preventDefault();
+        openBookmarkModal(index, bookmark);
+      };
 
       const img = document.createElement("img");
-      img.src = site.icon;
+      img.src = bookmark.icon;
       img.className = "icon";
-      img.alt = site.name;
+      img.alt = bookmark.name;
+      img.onerror = () => {
+        img.src = `https://www.google.com/s2/favicons?domain=${new URL(bookmark.url).hostname}&sz=32`;
+      };
 
       const span = document.createElement("span");
-      span.textContent = site.name;
+      span.textContent = bookmark.name;
 
-      a.appendChild(img);
-      a.appendChild(span);
-      wrap.appendChild(a);
+      div.appendChild(img);
+      div.appendChild(span);
+      wrap.appendChild(div);
+    });
+
+    const remaining = 6 - bookmarks.length;
+    for (let i = 0; i < remaining; i++) {
+      const div = document.createElement("div");
+      div.className = "site add-bookmark";
+      div.onclick = () => openBookmarkModal();
+
+      const plus = document.createElement("div");
+      plus.className = "plus-icon";
+      plus.textContent = "+";
+
+      const span = document.createElement("span");
+      span.textContent = "Add";
+
+      div.appendChild(plus);
+      div.appendChild(span);
+      wrap.appendChild(div);
+    }
+  });
+}
+
+let currentEditIndex = null;
+
+function openBookmarkModal(index = null, bookmark = null) {
+  const modal = document.getElementById("bookmarkModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const nameInput = document.getElementById("bookmarkName");
+  const urlInput = document.getElementById("bookmarkUrl");
+  const deleteBtn = document.getElementById("deleteBookmark");
+
+  currentEditIndex = index;
+
+  if (bookmark) {
+    modalTitle.textContent = "Edit Bookmark";
+    nameInput.value = bookmark.name;
+    urlInput.value = bookmark.url;
+    deleteBtn.style.display = "block";
+  } else {
+    modalTitle.textContent = "Add Bookmark";
+    nameInput.value = "";
+    urlInput.value = "";
+    deleteBtn.style.display = "none";
+  }
+
+  modal.classList.add("active");
+  nameInput.focus();
+}
+
+function closeBookmarkModal() {
+  const modal = document.getElementById("bookmarkModal");
+  modal.classList.remove("active");
+  currentEditIndex = null;
+}
+
+function saveBookmark() {
+  const nameInput = document.getElementById("bookmarkName");
+  const urlInput = document.getElementById("bookmarkUrl");
+
+  const name = nameInput.value.trim();
+  let url = urlInput.value.trim();
+
+  if (!name || !url) {
+    alert("Please fill in both fields");
+    return;
+  }
+
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    url = 'https://' + url;
+  }
+
+  try {
+    new URL(url);
+  } catch (e) {
+    alert("Please enter a valid URL");
+    return;
+  }
+
+  chrome.storage.local.get(["bookmarks"], (result) => {
+    const bookmarks = result.bookmarks || [];
+
+    const hostname = new URL(url).hostname;
+    const newBookmark = {
+      name: name.slice(0, 12),
+      url: url,
+      icon: `https://www.google.com/s2/favicons?domain=${hostname}&sz=32`
+    };
+
+    if (currentEditIndex !== null) {
+      bookmarks[currentEditIndex] = newBookmark;
+    } else {
+      if (bookmarks.length >= 6) {
+        alert("Maximum 6 bookmarks allowed");
+        return;
+      }
+      bookmarks.push(newBookmark);
+    }
+
+    chrome.storage.local.set({ bookmarks: bookmarks }, () => {
+      renderBookmarks();
+      closeBookmarkModal();
     });
   });
 }
 
-renderRecent();
+function deleteBookmark() {
+  if (currentEditIndex === null) return;
+
+  if (!confirm("Delete this bookmark?")) return;
+
+  chrome.storage.local.get(["bookmarks"], (result) => {
+    const bookmarks = result.bookmarks || [];
+    bookmarks.splice(currentEditIndex, 1);
+
+    chrome.storage.local.set({ bookmarks: bookmarks }, () => {
+      renderBookmarks();
+      closeBookmarkModal();
+    });
+  });
+}
+
+document.getElementById("closeModal").onclick = closeBookmarkModal;
+document.getElementById("saveBookmark").onclick = saveBookmark;
+document.getElementById("deleteBookmark").onclick = deleteBookmark;
+
+document.getElementById("bookmarkModal").onclick = (e) => {
+  if (e.target.id === "bookmarkModal") {
+    closeBookmarkModal();
+  }
+};
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeBookmarkModal();
+  }
+});
+
+document.getElementById("bookmarkName").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    document.getElementById("bookmarkUrl").focus();
+  }
+});
+
+document.getElementById("bookmarkUrl").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    saveBookmark();
+  }
+});
+
+renderBookmarks();

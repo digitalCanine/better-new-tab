@@ -2,7 +2,7 @@
 
 A terminal-styled new tab page with search, weather, and command system. Perfect for users who want their browser to feel like home.
 
-![Version](https://img.shields.io/badge/version-1.0.3-blue) ![License](https://img.shields.io/badge/license-MIT-green)
+![Version](https://img.shields.io/badge/version-1.0.4-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Features
 
@@ -10,7 +10,7 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 - ⚡ **Quick Search Commands** - Instantly search Google, YouTube, GitHub, and more with `!` prefixes
 - 🎨 **Customizable Color Scheme** - Change all colors to match your terminal setup
 - 🌦️ **Live Weather** - Auto-detects your location and displays current conditions
-- 📜 **Search History** - Recent searches displayed as quick-access tiles
+- 📜 **Bookmarks** - Up to six bookmarks displayed as quick-access tiles
 - 🔧 **Built-in Commands** - `!help`, `!neofetch`, `!config`, and more
 - 💾 **Persistent Settings** - Your colors and history sync across browser sessions
 
