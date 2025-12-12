@@ -22,7 +22,7 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 
 ### From Mozilla Add-ons
 
-*Extension pending review*
+https://addons.mozilla.org/en-US/firefox/addon/dc-better-new-tab/
 
 ### Manual Installation
 
