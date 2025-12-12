@@ -2,7 +2,7 @@
 
 A terminal-styled new tab page with search, weather, and command system. Perfect for users who want their browser to feel like home.
 
-![Version](https://img.shields.io/badge/version-1.0.4-blue) ![License](https://img.shields.io/badge/license-MIT-green)
+![Version](https://img.shields.io/badge/version-1.0.5-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Features
 
@@ -22,7 +22,7 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 
 ### From Mozilla Add-ons
 
-https://addons.mozilla.org/en-US/firefox/addon/dc-better-new-tab/
+<https://addons.mozilla.org/en-US/firefox/addon/dc-better-new-tab/>
 
 ### Manual Installation
 
