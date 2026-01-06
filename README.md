@@ -1,4 +1,4 @@
-# Better New Tab
+# digitalCanine's Better New Tab
 
 A terminal-styled new tab page with search, weather, and command system. Perfect for users who want their browser to feel like home.
 
