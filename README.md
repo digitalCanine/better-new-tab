@@ -6,13 +6,13 @@ A terminal-styled new tab page with search, weather, and command system. Perfect
 
 ## Features
 
-- 🖥️ **Terminal-Inspired Interface** - Scanline effects, monospace fonts, and command-line aesthetics
-- ⚡ **Quick Search Commands** - Instantly search Google, YouTube, GitHub, and more with `!` prefixes
-- 🎨 **Customizable Color Scheme** - Change all colors to match your terminal setup
-- 🌦️ **Live Weather** - Auto-detects your location and displays current conditions
-- 📜 **Bookmarks** - Up to six bookmarks displayed as quick-access tiles
-- 🔧 **Built-in Commands** - `!help`, `!neofetch`, `!config`, and more
-- 💾 **Persistent Settings** - Your colors and history sync across browser sessions
+- **Terminal-Inspired Interface** - Scanline effects, monospace fonts, and command-line aesthetics
+- **Quick Search Commands** - Instantly search Google, YouTube, GitHub, and more with `!` prefixes
+- **Customizable Color Scheme** - Change all colors to match your terminal setup
+- **Live Weather** - Auto-detects your location and displays current conditions
+- **Bookmarks** - Up to six bookmarks displayed as quick-access tiles
+- **Built-in Commands** - `!help`, `!neofetch`, `!config`, and more
+- **Persistent Settings** - Your colors and history sync across browser sessions
 
 ## Example
 
@@ -194,9 +194,9 @@ MIT License - see LICENSE file for details
 
 ## Support
 
-- 🐛 Found a bug? [Open an issue](../../issues)
-- 💡 Have a suggestion? [Open an issue](../../issues)
-- ⭐ Like this extension? Star this repo!
+- Found a bug? [Open an issue](../../issues)
+- Have a suggestion? [Open an issue](../../issues)
+- Like this extension? Star this repo!
 
 ## Roadmap
 
@@ -210,7 +210,3 @@ MIT License - see LICENSE file for details
 - [ ] Sticky notes / todo list command
 - [ ] `!calc` command for quick math
 - [ ] Browser history search integration
-
----
-
-**Made with ☕ and 💻 by terminal lovers, for terminal lovers**
